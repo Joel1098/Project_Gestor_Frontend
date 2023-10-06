@@ -1,4 +1,9 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+/* 
+Nombre: App.js
+Funcionalidad: Componente principal de la aplicación que define las rutas y la estructura de la navegación.
+*/
+
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 import AuthLayout from './layouts/AuthLayout'
 import RutaProtegida from './layouts/RutaProtegida'
@@ -14,13 +19,15 @@ import Proyecto from './paginas/Proyecto'
 import EditarProyecto from './paginas/EditarProyecto'
 import NuevoColaborador from './paginas/NuevoColaborador'
 
-import {AuthProvider} from './context/AuthProvider'
-import {ProyectosProvider} from './context/ProyectosProvider'
-
-
-
+import { AuthProvider } from './context/AuthProvider'
+import { ProyectosProvider } from './context/ProyectosProvider'
+/*
+  Funcionalidad: Define las rutas y componentes de la aplicación, incluyendo rutas protegidas.
+  Entradas: Ninguna explícita.
+  Salidas: Estructura de navegación de la aplicación.
+  */
 function App() {
-
+  
 
   return (
     <BrowserRouter>
