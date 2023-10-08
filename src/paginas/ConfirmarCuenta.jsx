@@ -1,7 +1,14 @@
-/* 
+/*
 Nombre: ConfirmarCuenta.js
 Funcionalidad: Componente para confirmar una cuenta de usuario.
+Entradas: No recibe parámetros explícitos.
+Salidas: Interfaz para confirmar la cuenta de usuario y redirigir a la página de inicio de sesión.
+Comportamiento:
+  - Utiliza el hook `useParams` de React Router para obtener el identificador único de la cuenta desde la URL.
+  - Utiliza el hook `useState` para manejar el estado de la alerta y la confirmación de la cuenta.
+  - Realiza una solicitud al servidor para confirmar la cuenta de usuario al cargar el componente utilizando `useEffect`.
 */
+
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import clienteAxios from '../config/clienteAxios';
@@ -20,7 +27,7 @@ function ConfirmarCuenta() {
   useEffect(() => {
     /*
     Funcionalidad: Realiza la solicitud de confirmación de la cuenta al servidor.
-    Entradas: Ninguna explícita.
+    Entradas: Ninguna.
     Salidas: Actualiza el estado de la alerta y la confirmación de la cuenta.
     */
     const confirmarCuenta = async () => {

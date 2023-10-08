@@ -1,3 +1,13 @@
+/* 
+Nombre: OlvidePassword.js
+Funcionalidad: Componente para restablecer la contraseña de un usuario a través de un token válido.
+
+Comportamiento:
+  - Utiliza los hooks `useState` y `useEffect` de React para gestionar el estado de la contraseña, validar el token y mostrar alertas.
+  - Comprueba la validez del token al cargar el componente y actualiza el estado en consecuencia.
+  - Permite al usuario restablecer su contraseña si el token es válido y la nueva contraseña cumple con ciertos requisitos.
+  - Muestra mensajes de alerta en caso de errores o éxito en el restablecimiento de contraseña.
+*/
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import clienteAxios from '../config/clienteAxios'
@@ -7,7 +17,11 @@ const OlvidePassword = () => {
 
     const [email, setEmail] = useState('')
     const [alerta, setAlerta] = useState({})
-
+/* 
+    Funcionalidad: Maneja el envío del formulario para restablecer la contraseña.
+    Entradas: Evento del formulario.
+    Salidas: Realiza una solicitud al servidor para actualizar la contraseña.
+    */
     const handleSubmit = async e => {
         e.preventDefault();
 

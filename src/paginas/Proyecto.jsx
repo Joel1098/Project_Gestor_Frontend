@@ -1,3 +1,14 @@
+/* 
+Nombre: Proyecto.js
+Funcionalidad: Componente para mostrar detalles de un proyecto y administrar tareas y colaboradores.
+
+Comportamiento:
+  - Utiliza el hook `useParams` de React Router para obtener el ID del proyecto de los parámetros de la URL.
+  - Utiliza los hooks `useEffect` y `useState` de React para gestionar el estado del proyecto, tareas, alertas y otros estados.
+  - Establece una conexión de socket.io para recibir actualizaciones en tiempo real relacionadas con el proyecto.
+  - Permite a los administradores editar el proyecto y agregar nuevas tareas.
+  - Muestra la lista de tareas y colaboradores asociados al proyecto.
+*/
 import { useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import useProyectos from '../hooks/useProyectos';
@@ -12,40 +23,45 @@ import io from 'socket.io-client'
 
 let socket;
 
-const Proyecto = () => {
+ const Proyecto = () => {
   const params = useParams();
   const { obtenerProyecto, proyecto, cargando, handleModalTarea, alerta, submitTareasProyecto, eliminarTareaProyecto, actualizarTareaProyecto, cambiarEstadoTarea } = useProyectos()
+
+   // Utiliza el hook useAdmin para determinar si el usuario es administrador del proyecto
+   const admin = useAdmin();
+   useEffect(() => {
+     // Obtiene los detalles del proyecto al cargar el componente
+     obtenerProyecto(params.id);
+   }, []);
  
-  const admin = useAdmin()
-
-
-  useEffect( () => {
-    obtenerProyecto(params.id)
-  }, [])
-
-  useEffect(() => {
-    socket = io(import.meta.env.VITE_BACKEND_URL)
-    socket.emit('abrir proyecto', params.id)
-  }, [])
-
-  useEffect(() => {
-    socket.on("tarea agregada", tareaNueva => {
-      if(tareaNueva.proyecto === proyecto._id) {
-          submitTareasProyecto(tareaNueva)
-      }
-    })
-
-    socket.on('tarea eliminada', tareaEliminada => {
-      if(tareaEliminada.proyecto === proyecto._id) {
-        eliminarTareaProyecto(tareaEliminada)
-      }
-    })
-
-    socket.on('tarea actualizada', tareaActualizada => {
-      if(tareaActualizada.proyecto._id === proyecto._id) {
-        actualizarTareaProyecto(tareaActualizada)
-      }
-    })
+   useEffect(() => {
+     // Establece una conexión de socket al servidor de backend al cargar el componente
+     socket = io(import.meta.env.VITE_BACKEND_URL);
+     socket.emit('abrir proyecto', params.id);
+   }, []);
+ 
+   useEffect(() => {
+     // Configura oyentes de socket para actualizaciones en tiempo real
+     socket.on("tarea agregada", tareaNueva => {
+       // Maneja la recepción de una nueva tarea agregada
+       if (tareaNueva.proyecto === proyecto._id) {
+         submitTareasProyecto(tareaNueva);
+       }
+     });
+ 
+     socket.on('tarea eliminada', tareaEliminada => {
+       // Maneja la recepción de una tarea eliminada
+       if (tareaEliminada.proyecto === proyecto._id) {
+         eliminarTareaProyecto(tareaEliminada);
+       }
+     });
+ 
+     socket.on('tarea actualizada', tareaActualizada => {
+       // Maneja la recepción de una tarea actualizada
+       if (tareaActualizada.proyecto._id === proyecto._id) {
+         actualizarTareaProyecto(tareaActualizada);
+       }
+     });
 
     socket.on('nuevo estado', nuevoEstadoTarea => {
       if(nuevoEstadoTarea.proyecto._id === proyecto._id) {
