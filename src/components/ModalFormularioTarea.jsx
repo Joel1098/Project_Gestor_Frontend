@@ -1,8 +1,18 @@
+/*
+Funcionalidad: Componente para mostrar un modal de creación o edición de tareas.
+Entradas: Ninguna.
+Salidas: Renderiza un modal con un formulario para crear o editar tareas, con campos como nombre, descripción, fecha de entrega y prioridad.
+Comportamientos:
+- Maneja los estados de los campos del formulario.
+- Realiza una solicitud al servidor para crear o actualizar una tarea.
+- Muestra una alerta si no se proporcionan todos los campos obligatorios.
+- Cuando se proporciona una tarea existente, prellena los campos con los datos de la tarea.
+*/
 import { Fragment, useState, useEffect } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import useProyectos from '../hooks/useProyectos'
 import Alerta from './Alerta'
-import { useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 
 const PRIORIDAD = ['Baja', 'Media', 'Alta']
 
@@ -16,7 +26,7 @@ const ModalFormularioTarea = () => {
 
     const params = useParams()
 
-    const { modalFormularioTarea, handleModalTarea, mostrarAlerta, alerta, submitTarea, tarea } = useProyectos();
+    const { modalFormularioTarea, handleModalTarea, mostrarAlerta, alerta, submitTarea, tarea } = useProyectos();
 
     useEffect(() => {
         if(tarea?._id) {
@@ -36,6 +46,7 @@ const ModalFormularioTarea = () => {
     }, [tarea]);
     
 
+    // Maneja el envío del formulario
     const handleSubmit = async e => {
         e.preventDefault();
 
@@ -49,6 +60,7 @@ const ModalFormularioTarea = () => {
 
         await submitTarea({ id, nombre, descripcion, fechaEntrega, prioridad, proyecto: params.id})
 
+        // Reinicia los estados
         setId('')
         setNombre('')
         setDescripcion('')
@@ -57,7 +69,8 @@ const ModalFormularioTarea = () => {
 
     }
 
-    const { msg } = alerta
+    const { msg } = alerta
+ 
  
     return (
         <Transition.Root show={ modalFormularioTarea } as={Fragment}>
@@ -77,7 +90,7 @@ const ModalFormularioTarea = () => {
                         />
                     </Transition.Child>
 
-                    {/* This element is to trick the browser into centering the modal contents. */}
+                    {}
                     <span className="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">
                         &#8203;
                     </span>

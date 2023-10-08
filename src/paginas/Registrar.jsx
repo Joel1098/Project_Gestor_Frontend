@@ -1,10 +1,21 @@
+/*
+Funcionalidad: Componente para registrar una cuenta de usuario.
+Entradas: Ninguna.
+Salidas: Formulario para registro de usuario y alertas en caso de errores.
+Comportamientos:
+- Controla el estado de los campos del formulario (nombre, email, password, repetirPassword).
+- Maneja el envío del formulario.
+- Realiza validaciones y muestra alertas en caso de errores.
+- Realiza una solicitud a la API para crear una nueva cuenta de usuario.
+- Limpia los campos después de un registro exitoso.
+*/
 import { useState } from 'react'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import Alerta from '../components/Alerta'
 import clienteAxios from '../config/clienteAxios'
 
 const Registrar = () => {
-    const [ nombre, setNombre ] = useState('')
+    const [ nombre, setNombre ] = useState('')
     const [ email, setEmail ] = useState('')
     const [ password, setPassword ] = useState('')
     const [ repetirPassword, setRepetirPassword ] = useState('')
@@ -31,7 +42,7 @@ const Registrar = () => {
 
         if(password.length < 6 ) {
             setAlerta({
-                msg: 'El Password es muy corto, agrega minimo 6 caracteres',
+                msg: 'El Password es muy corto, agrega mínimo 6 caracteres',
                 error: true
             })
             return
@@ -60,7 +71,7 @@ const Registrar = () => {
         }
     }
 
-    const { msg } = alerta
+    const { msg } = alerta
 
   return (
     <>

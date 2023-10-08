@@ -1,9 +1,20 @@
+/*
+Funcionalidad: Componente para crear o editar un proyecto.
+Entradas: Ninguna.
+Salidas: Renderiza un formulario que permite crear o editar un proyecto con campos como nombre, descripción, fecha de entrega y cliente.
+Comportamientos:
+- Maneja los estados de los campos del formulario.
+- Realiza una solicitud al servidor para crear o actualizar un proyecto.
+- Muestra una alerta si no se proporcionan todos los campos obligatorios.
+- Cuando se proporciona un proyecto existente, prellena los campos con los datos del proyecto.
+*/
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import useProyectos from '../hooks/useProyectos'
 import Alerta from './Alerta'
 
 const FormularioProyecto = () => {
+    // Estados para los campos del formulario
     const [id, setId] = useState(null)
     const [nombre, setNombre] = useState('')
     const [descripcion, setDescripcion] = useState('')
@@ -23,7 +34,7 @@ const FormularioProyecto = () => {
         } 
     }, [params])
 
-
+    // Maneja el envío del formulario
     const handleSubmit = async e => {
         e.preventDefault();
 
@@ -39,6 +50,7 @@ const FormularioProyecto = () => {
         // Pasar los datos hacia el provider
         await submitProyecto({ id, nombre, descripcion, fechaEntrega, cliente})
 
+        // Reinicia los estados
         setId(null)
         setNombre('')
         setDescripcion('')

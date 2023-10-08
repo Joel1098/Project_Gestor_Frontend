@@ -1,3 +1,12 @@
+/*
+Funcionalidad: Componente para agregar un colaborador a un proyecto.
+Entradas: Ninguna.
+Salidas: Renderiza un formulario que permite agregar un colaborador por su correo electrónico.
+Comportamientos:
+- Maneja el estado del correo electrónico del colaborador.
+- Muestra una alerta si no se proporciona un correo electrónico válido.
+- Invoca la función submitColaborador al enviar el formulario para agregar al colaborador.
+*/
 import { useState } from 'react'
 import useProyectos from '../hooks/useProyectos'
 import Alerta from './Alerta'

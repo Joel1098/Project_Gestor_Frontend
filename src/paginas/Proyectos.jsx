@@ -1,4 +1,14 @@
-import { useEffect } from 'react'
+/*
+Funcionalidad: Componente para mostrar una lista de proyectos.
+Entradas: Ninguna.
+Salidas: Renderiza una lista de proyectos y una alerta si la hay.
+Comportamientos:
+- Obtiene la lista de proyectos desde el contexto.
+- Muestra una alerta si la hay.
+- Si existen proyectos, los muestra en una lista de vistas previas de proyectos.
+- Si no hay proyectos, muestra un mensaje indicando que no hay proyectos aún.
+*/
+import { useEffect } from 'react'
 import useProyectos from "../hooks/useProyectos"
 import PreviewProyecto from "../components/PreviewProyecto"
 import Alerta from "../components/Alerta"

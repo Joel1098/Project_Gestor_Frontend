@@ -1,13 +1,23 @@
+/*
+Funcionalidad: Componente que muestra una tarea y permite realizar acciones como editar, completar o eliminar la tarea.
+Entradas:
+- tarea: Objeto que contiene información de la tarea a mostrar.
+Salidas: Renderiza la interfaz de una tarea con sus detalles, como nombre, descripción, prioridad y fecha de entrega. También muestra opciones de editar, completar o eliminar la tarea.
+Comportamientos:
+- Formatea la fecha de entrega de la tarea utilizando la función formatearFecha.
+- Muestra un mensaje de "Completada por" si la tarea está completada.
+- Habilita botones de editar, completar o eliminar según el rol de administrador.
+*/
 import { formatearFecha } from "../helpers/formatearFecha"
 import useProyectos from "../hooks/useProyectos"
 import useAdmin from "../hooks/useAdmin"
 
-const Tarea = ({tarea}) => {
+const Tarea = ({ tarea }) => {
 
-    const { handleModalEditarTarea, handleModalEliminarTarea, completarTarea } = useProyectos()
+    const { handleModalEditarTarea, handleModalEliminarTarea, completarTarea } = useProyectos()
     const admin = useAdmin()
 
-    const { descripcion, nombre, prioridad, fechaEntrega, estado, _id } = tarea
+    const { descripcion, nombre, prioridad, fechaEntrega, estado, _id } = tarea
 
     return (
         <div className="border-b p-5 flex justify-between items-center">
