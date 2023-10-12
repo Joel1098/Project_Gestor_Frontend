@@ -1,3 +1,14 @@
+/*
+    Funcionalidad: muestra una vista previa de un proyecto en la interfaz de usuario. 
+    Dependiendo de la autenticación del usuario y el rol (creador o colaborador), muestra 
+    información adicional, como el cliente y un enlace para ver el proyecto completo.
+
+    - Entradas: El componente utiliza el hook personalizado useAuth para obtener información
+    relacionada con la autenticación del usuario (auth). Esta información es una entrada fundamental 
+    para determinar si el usuario actual es el creador del proyecto o un colaborador, lo que afecta
+    la representación visual del proyecto.
+    
+*/
 import { Link } from 'react-router-dom'
 import useAuth from '../hooks/useAuth'
 

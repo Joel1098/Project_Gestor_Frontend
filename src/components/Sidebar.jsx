@@ -1,3 +1,9 @@
+/*
+  Funcionalidad: representa una barra lateral que proporciona información sobre el usuario autenticado
+  y un enlace para crear un nuevo proyecto. Su funcionalidad principal es la representación visual en
+  la interfaz de usuario y la navegación a la página de creación de proyectos.
+
+*/
 import { Link } from 'react-router-dom'
 import useAuth from '../hooks/useAuth'
 

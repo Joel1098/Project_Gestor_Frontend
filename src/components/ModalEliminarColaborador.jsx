@@ -1,3 +1,20 @@
+/*
+    Funcionalidad: representa un modal de eliminación de un colaborador en un proyecto. Muestra información sobre la eliminación,
+    permite al usuario confirmar o cancelar la eliminación y ejecuta las acciones correspondientes cuando se hace clic en los botones.
+    
+    - Entradas: 
+        modalEliminarColaborador: Esto parece ser un valor booleano que controla si el modal de eliminación se muestra o se
+        oculta. Puede considerarse una entrada porque su estado puede cambiar, lo que afecta la visibilidad del modal.
+        
+        eliminarColaborador: Esto podría ser una función que se llama cuando se hace clic en el botón "Eliminar".
+        
+    - Salidas: 
+        Cuando se hace clic en el botón "Eliminar", se llama a la función eliminarColaborador. Esto podría llevar a la
+        eliminación real del colaborador en la base de datos o a la realización de alguna otra acción relacionada con la eliminación.
+        
+        Cuando se hace clic en el botón "Cancelar", se llama a la función handleModalEliminarColaborador, que probablemente oculta
+        el modal de eliminación. Esto también podría tener efectos secundarios en la interfaz de usuario, como ocultar el modal.
+*/
 import { Fragment  } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import useProyectos from '../hooks/useProyectos'
