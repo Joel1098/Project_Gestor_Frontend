@@ -1,3 +1,10 @@
+/*
+    Funcionalidad: representa un modal que permite al usuario confirmar la eliminación de una tarea. Los botones "Eliminar"
+    y "Cancelar" desencadenan acciones relacionadas con la eliminación de la tarea y la ocultación del modal.
+
+    - Salidas: Eliminación de tarea: Si la función handleModalEliminarTarea se encarga de la eliminación de la tarea, la
+    salida sería la eliminación exitosa de la tarea. Esta acción podría afectar la base de datos o el estado de la aplicación. 
+*/
 import { Fragment  } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import useProyectos from '../hooks/useProyectos'
