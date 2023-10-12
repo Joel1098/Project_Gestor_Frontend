@@ -1,3 +1,13 @@
+/*
+Funcionalidad: Renderizar la información de un colaborador, incluyendo su nombre y dirección de correo electrónico, 
+junto con un botón "Eliminar" que, al hacer clic en él, llama a la función handleModalEliminarColaborador que está destinada
+a manejar la eliminación de ese colaborador.
+
+Entradas: El componente Colaborador toma una prop llamada colaborador como entrada. Esta prop contiene información sobre
+el colaborador, como su nombre y dirección de correo electrónico.
+
+Salidas: El componente renderiza la información del colaborador y un botón "Eliminar". 
+*/
 import useProyectos from "../hooks/useProyectos"
 
 const Colaborador = ({colaborador}) => {
