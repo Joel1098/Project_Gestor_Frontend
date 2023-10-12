@@ -1,3 +1,11 @@
+/*
+    Funcionalidad:  representa la cabecera de la aplicación y proporciona opciones de navegación, búsqueda y cierre de sesión.
+
+    Comportamiento:
+        - Importa el componente Link desde la biblioteca react-router-dom, que se utiliza para crear enlaces y manejar la
+        navegación en la aplicación.
+        - Un enlace "Proyectos" que dirige al usuario a la página de proyectos cuando se hace clic.
+*/
 import { Link } from 'react-router-dom'
 import useAuth from '../hooks/useAuth'
 import useProyectos from '../hooks/useProyectos'
